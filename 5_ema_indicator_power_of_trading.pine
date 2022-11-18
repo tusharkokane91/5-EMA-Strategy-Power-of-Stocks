@@ -1,0 +1,24 @@
+// This source code is subject to the terms of the Mozilla Public License 2.0 at https://mozilla.org/MPL/2.0/
+// © tko1591
+
+//@version=5
+indicator("5 EMA Strategy[Power of Trading]", overlay = true, max_labels_count = 500)
+fiveEma = ta.ema(close, 5)
+if low[1] > fiveEma and low < low[1]
+    label.new(x = bar_index, y = high,
+              text = "Sell",
+              color = color.new(color.red, 40),
+              style = label.style_label_down, 
+              size = size.auto,
+              textcolor = color.white, 
+              xloc = xloc.bar_index)
+
+if high[1] < fiveEma and high > high[1]
+    label.new(x = bar_index, y = low,
+              text = "Buy",
+              color = color.new(color.green, 40),
+              style = label.style_label_up, 
+              size = size.auto,
+              textcolor = color.white, 
+              xloc = xloc.bar_index)
+plot(fiveEma, color = color.orange)
