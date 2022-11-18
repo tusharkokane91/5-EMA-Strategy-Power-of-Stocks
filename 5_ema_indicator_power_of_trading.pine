@@ -2,7 +2,7 @@
 // © tko1591
 
 //@version=5
-indicator("5 EMA Strategy[Power of Trading]", overlay = true, max_labels_count = 500)
+indicator("5 EMA Strategy[Power of Stocks]", overlay = true, max_labels_count = 500)
 fiveEma = ta.ema(close, 5)
 if low[1] > fiveEma and low < low[1]
     label.new(x = bar_index, y = high,
